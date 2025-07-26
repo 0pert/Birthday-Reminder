@@ -1,0 +1,27 @@
+{% include 'header.html' %}
+
+<div class="container">
+    <div class="row">
+        <form role="form" method="POST" action="{{url_for('add_birthday')}}">
+
+
+            <h1>ADD A BIRTHDAY HERE!!!!</h1>
+
+            <div class="mb-3">
+                <label for="nameInput" class="form-label">Name</label>
+                <input type="text" class="form-control" id="nameInput" name="name" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="dateInput" class="form-label">Birthday</label>
+                <input type="date" class="form-control" id="dateInput" name="date" required>
+            </div>
+
+
+            <button type="submit" class="btn btn-outline-primary">Add Birthday</button>
+    </div>
+    </form>
+</div>
+</div>
+
+{% include 'footer.html' %}

@@ -1,0 +1,34 @@
+{% include 'header.html' %}
+
+<div class="main">
+    <div class="today center">
+        <h1>{{bday_list.today_str}}</h1>
+    </div>
+    <a class="btn btn-outline-primary add-btn" href="{{ url_for('add_form') }}" role="button">Add Birthday</a>
+
+    {% for person in bday_list.people %}
+
+    
+
+    <div class="card text-center mb-3" style="width: 18rem;">
+        <div class="card-body">
+            <form action="/bday/remove/{{person.name}}" method="POST" onsubmit="return confirmDelete();">
+            <h5 class="card-title">{{person.name}} ({{person.age}})</h5>
+            <p class="card-text">{{person.birthday}}</p>
+            <a href="/bday/edit/{{person.name}}" class="btn btn-primary btn-sm edit-btn">Edit</a>
+            <!-- <a href="/remove/{{person.name}}" class="btn-close closing-x"></a> -->
+            <button type="submit" class="btn-close closing-x" onsubmit="return confirmDelete();"></button>
+            </form>
+        </div>
+    </div>
+<!-- btn-close -->
+    {% endfor %}
+</div>
+
+<script>
+function confirmDelete() {
+    // location.hash("/remove")
+    return confirm("Är du säker på att du vill radera personen?");
+}
+</script>
+{% include 'footer.html' %}
